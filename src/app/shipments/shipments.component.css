@@ -1,0 +1,38 @@
+.tool-bar {
+    height: 100px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.row-1 {
+    flex-direction: column;
+}
+.search-bar {
+    width:70%;
+    display: block;
+    margin: auto;
+}
+.search-bar-col{
+    background-color: rgba(0, 0, 0, 0.03);
+}
+.search-bar-col mat-form-field {
+    padding: 5px;
+}
+.chips-bar {
+    width: 100%;
+    height: 40px;
+}
+.shipment-detail {
+    width: 95%;
+    display: block;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+

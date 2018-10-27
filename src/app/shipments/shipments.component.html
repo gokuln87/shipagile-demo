@@ -1,0 +1,56 @@
+<mat-toolbar class="tool-bar" color="primary">
+  <mat-toolbar-row class="row-1">
+    <button mat-raised-button color="accent">Create Shipment</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-grid-list class="search-bar" cols="11" rowHeight="70px">
+  <mat-grid-tile class="search-bar-col" colspan="6">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Shipping Point</mat-label>
+        <input matInput placeholder="Shipping Point">
+        <mat-icon matSuffix>place</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Route</mat-label>
+        <input matInput placeholder="Route">
+        <mat-icon matSuffix>map</mat-icon>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile class="search-bar-col" colspan="4">
+    <div>
+      <ngx-mat-drp (selectedDateRangeChanged)="updateDateRange($event)" [options]="dateOptions" #dateRangePicker></ngx-mat-drp>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile class="search-bar-col" colspan="1">
+    <div>
+      <button mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="11">
+    <div class="chips-bar">
+      <mat-chip-list>
+        <mat-chip removable="true" selected="true">Plants
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip removable="true">Carriers
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip removable="true">Goods
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <mat-chip removable="true">Service
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<div class="shipment-detail">
+  <app-shipment-detail *ngFor="let shipment of shipments | async" [shipment]="shipment">
+  </app-shipment-detail>
+</div>

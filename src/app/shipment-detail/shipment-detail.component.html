@@ -1,0 +1,125 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header collapsedHeight="150px" expandedHeight="150px">
+    <mat-panel-description>
+      <div class="header">
+        <mat-grid-list cols="9" rowHeight="70px">
+          <mat-grid-tile colspan="1" rowspan="2">
+            <img [src]="shipment.carrierImage">
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2">
+            <h3>{{shipment.shipmentId}}</h3>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2">
+            <h3>{{shipment.shipFrom.id}}</h3>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="2">
+            <mat-icon>arrow_forward</mat-icon>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2">
+            <h3>{{shipment.shipTo.id}}</h3>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            <h3>{{shipment.estimatedRate}}</h3>
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="2">
+            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2">
+            <p>{{shipment.shipFrom.name}}</p>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2">
+            <p>{{shipment.shipTo.name}}</p>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            <p>USD</p>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <ng-template matExpansionPanelContent>
+    <mat-horizontal-stepper>
+      <mat-step label="Add or Remove Deliveries">
+        <mat-grid-list cols="4" rowHeight="40px">
+          <div class="stepper-line-items" *ngFor="let item of shipment.lineItems">
+            <mat-grid-tile rowspan="2">
+              <h3 class="mat-subheading-2"> {{item.deliveryId}}</h3>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <p class="mat-body-1">23 Nov, 2018</p>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <p class="mat-body-1"></p>250
+            </mat-grid-tile>
+            <mat-grid-tile rowspan="2">
+              <button mat-icon-button>
+                <mat-icon>add</mat-icon>
+              </button>
+              <button mat-icon-button>
+                <mat-icon>delete_outline</mat-icon>
+              </button>
+            </mat-grid-tile>
+            <mat-grid-tile class="border-bottom">
+              <p class="mat-caption">Deliver By</p>
+            </mat-grid-tile>
+            <mat-grid-tile class="border-bottom">
+              <p class="mat-caption">lbs</p>
+            </mat-grid-tile>
+          </div>
+        </mat-grid-list>
+        <button mat-button matStepperNext>Next</button>
+      </mat-step>
+      <mat-step label="Choose Carrier">
+        <mat-grid-list cols="5" rowHeight="40px">
+          <div *ngFor="let rate of shipment.rates">
+            <mat-grid-tile rowspan="2">
+              <img [src]="rate.providerImageS">
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <p class="mat-body-1">{{rate.provider}}</p>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <p class="mat-body-1">{{rate.amount}}</p>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <p class="mat-body-1">{{rate.estimatedDays}} <span style="padding:5px">days</span></p>
+            </mat-grid-tile>
+            <mat-grid-tile rowspan="2">
+              <mat-checkbox indeterminate="true"></mat-checkbox>
+            </mat-grid-tile>
+            <mat-grid-tile class="border-bottom">
+              <p class="mat-caption">{{rate.serviceLevel.name}}</p>
+            </mat-grid-tile>
+            <mat-grid-tile class="border-bottom">
+              <p class="mat-caption">{{rate.currency}}</p>
+            </mat-grid-tile>
+            <mat-grid-tile class="border-bottom">
+              <p class="mat-caption">Arrives By</p>
+            </mat-grid-tile>
+          </div>
+        </mat-grid-list>
+        <button mat-button matStepperPrevious>Previous</button>
+        <button mat-button matStepperNext>Next</button>
+      </mat-step>
+      <mat-step label="Print Shipping Label">
+        <button mat-button matStepperPrevious>Previous</button>
+        <button mat-button matStepperNext>Next</button>
+      </mat-step>
+      <mat-step label="Track Shipment">
+        <button mat-button matStepperPrevious>Previous</button>
+        <button mat-button matStepperNext>Next</button>
+      </mat-step>
+      <mat-step label="Details">
+        <button mat-button matStepperPrevious>Previous</button>
+        <button mat-button>Done</button>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </ng-template>
+
+  <mat-action-row>
+    <button mat-raised-button color="primary">Save</button>
+    <button mat-button>Cancel</button>
+  </mat-action-row>
+</mat-expansion-panel>

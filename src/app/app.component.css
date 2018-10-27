@@ -1,0 +1,52 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+mat-toolbar {
+  height: 64px;
+  position: relative;
+  z-index: 100;
+}
+mat-toolbar-row button{
+margin-right: 10px;
+}
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+mat-sidenav-container {
+  width: 100% !important;
+  height: calc(100vh - 64px) !important;
+}
+.user-info {
+  vertical-align: middle;
+  padding-bottom: 40px;
+}
+.user-info img {
+  vertical-align: middle;
+  width:  100px;
+  height: 100px;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+}
+.user-info h3, h4 {
+  text-align: center;
+  margin-top: auto;
+  padding-top: 80px;
+}
+.app-content {
+  display: flex;
+}
+.test-link {
+  background-color: lightgray;
+}
+*:focus {
+  outline: none;
+  border: 0;
+}
