@@ -33,10 +33,12 @@
   <mat-grid-tile colspan="11">
     <div class="chips-bar">
       <mat-chip-list>
-        <mat-chip removable="true" selected="true">Plants
+        <mat-chip removable="true" (click)="openFilterDialog('Plant')">
+          Plants
           <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
-        <mat-chip removable="true">Carriers
+        <mat-chip removable="true" (click)="openFilterDialog('Carrier')">
+          Carriers
           <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
         <mat-chip removable="true">Goods

@@ -54,6 +54,7 @@ export interface Shipment {
   createdOn: Date,
   createdBy: String,
   status: ShipmentStatus,
+  trackingProgress: Number,
   planShipDate: Date,
   deliveryDate: Date,
   selectedCarrier: String,

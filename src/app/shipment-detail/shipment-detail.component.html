@@ -23,7 +23,7 @@
           </mat-grid-tile>
 
           <mat-grid-tile colspan="2">
-            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+            <mat-progress-bar mode="determinate" [value]="shipment.trackingProgress"></mat-progress-bar>
           </mat-grid-tile>
           <mat-grid-tile colspan="2">
             <p>{{shipment.shipFrom.name}}</p>

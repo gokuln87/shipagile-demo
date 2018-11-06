@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { ShipmentStatus, Shipment, ShipmentService } from '../services/shipment.service';
-import { defineBase } from '@angular/core/src/render3';
+import { Shipment, ShipmentService } from '../services/shipment.service';
 
 @Injectable({
   providedIn: 'root'

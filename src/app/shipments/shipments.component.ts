@@ -1,26 +1,33 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgxDrpOptions, PresetItem, Range } from 'ngx-mat-daterange-picker';
 import { Shipment, ShipmentService } from '../services/shipment.service';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component';
+import { MasterDataService } from '../services/master-data.service';
 
 @Component({
   selector: 'app-shipments',
   templateUrl: './shipments.component.html',
   styleUrls: ['./shipments.component.css']
 })
-export class ShipmentsComponent implements OnInit {
+export class ShipmentsComponent implements OnInit, OnDestroy {
   search: FormGroup;
   dateRange: Range = { fromDate: new Date(), toDate: new Date() };
   dateOptions: NgxDrpOptions;
   datePresets: Array<PresetItem> = [];
-
   shipments: Observable<Shipment[]>;
+  masterDataService: MasterDataService;
 
   @ViewChild('dateRangePicker')
   dateRangePicker;
 
-  constructor(fb: FormBuilder, shipmentService: ShipmentService) {
+  constructor(fb: FormBuilder,
+    shipmentService: ShipmentService,
+    public dialog: MatDialog,
+    mds: MasterDataService,
+  ) {
     this.search = fb.group({
       shippingPoint: [''],
       route: [''],
@@ -31,6 +38,7 @@ export class ShipmentsComponent implements OnInit {
       searchAll: ['']
     });
 
+    this.masterDataService = mds;
     this.shipments = shipmentService.getShipment();
   }
 
@@ -48,6 +56,8 @@ export class ShipmentsComponent implements OnInit {
         hasBackdrop: false
       }
     }
+
+    this.masterDataService.initialize();
   }
   updateDateRange(range: Range) {
     this.dateRange = range;
@@ -73,6 +83,14 @@ export class ShipmentsComponent implements OnInit {
       { presetLabel: "This Month", range: { fromDate: currMonthStart, toDate: currMonthEnd } },
       { presetLabel: "Last Month", range: { fromDate: lastMonthStart, toDate: lastMonthEnd } }
     ]
+  }
+
+  openFilterDialog(type: String) {
+    this.dialog.open(FilterDialogComponent, { "data": { "filterType": type } });
+  }
+
+  ngOnDestroy() {
+    this.masterDataService.cancel();
   }
 }
 

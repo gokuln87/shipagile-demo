@@ -16,7 +16,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -37,6 +37,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatProgressBarModule,
     MatStepperModule,
     MatCheckboxModule,
+    MatDialogModule,
   ],
   exports: [
     MatToolbarModule,
@@ -54,7 +55,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatExpansionModule,
     MatProgressBarModule,
     MatStepperModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule,
   ],
   declarations: []
 })

@@ -14,6 +14,9 @@ import { ShipmentsComponent } from './shipments/shipments.component';
 import { ShipmentService } from './services/shipment.service';
 import { FirestoreShipmentService } from './services/firestore-shipment.service';
 import { ShipmentDetailComponent } from './shipment-detail/shipment-detail.component';
+import { MasterDataService } from './services/master-data.service';
+import { FilterService } from './services/filter.service';
+import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { ShipmentDetailComponent } from './shipment-detail/shipment-detail.compo
     DashboardComponent,
     DeliveriesComponent,
     ShipmentsComponent,
-    ShipmentDetailComponent
+    ShipmentDetailComponent,
+    FilterDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +35,15 @@ import { ShipmentDetailComponent } from './shipment-detail/shipment-detail.compo
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+  ],
+  entryComponents: [
+    FilterDialogComponent,
   ],
   providers: [
-    { provide: ShipmentService, useClass: FirestoreShipmentService }
+    { provide: ShipmentService, useClass: FirestoreShipmentService },
+    MasterDataService,
+    FilterService,
   ],
   bootstrap: [AppComponent]
 })
